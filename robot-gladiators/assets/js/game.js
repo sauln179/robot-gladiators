@@ -1,3 +1,11 @@
+// Game States
+// "WIN" - Player robot has defeated all enemy-robots
+//    * Fight all enemy-robots
+//    * Defeat each enemy-robot
+// "LOSE" - Player robot's health is zero or less
+
+
+
 //Create a window that alerts the user the fight has begun
 function fight(){
     window.alert("The fight has begun!");
@@ -9,10 +17,10 @@ var playerAttack= 10;
 var playerMoney= 10;
 console.log(playerName, playerHealth, playerAttack, "$" +playerMoney);
 
-var enemyName = "Roborto";
+var enemyNames = ["Roborto", "Junk Warrior","Cyber Soldier", "Divine Zeus"]
 var enemyHealth = 50;
 var enemyAttack = 12;
-var fight = function() {
+var fight = function(enemyNames) {
     // Alert players that they are starting the round
     window.alert("Welcome to Robot Gladiators!");
 
@@ -25,19 +33,19 @@ var fight = function() {
     enemyHealth = enemyHealth - playerAttack;
 
     // Log a resulting message to the console so we know that it worked.
-    console.log(playerName+ " attacked " + enemyName +". "+ enemyName +" now has "+enemyHealth+" health remaining."
+    console.log(playerName+ " attacked " + enemyNames +". "+ enemyNames +" now has "+enemyHealth+" health remaining."
     );
     //CHECK ENEMY'S HEALTH
     if (enemyHealth <= 0) {
-        window.alert(enemyName + " has died!");
+        window.alert(enemyNames + " has died!");
       } 
       else {
-        window.alert(enemyName + " still has " + enemyHealth + " health left.");
+        window.alert(enemyNames + " still has " + enemyHealth + " health left.");
       }      
 
     // Subtract the value of `enemyAttack` from the value of `playerHealth` and use that result to update the value in the `playerHealth` variable.
     playerHealth = playerHealth - enemyAttack;
-    console.log(enemyName+ " attacked " + playerName +". "+ playerName +" now has "+playerHealth+" health remaining."
+    console.log(enemyNames+ " attacked " + playerName +". "+ playerName +" now has "+playerHealth+" health remaining."
     );
     // check player's health
     if (playerHealth <= 0) {
@@ -63,11 +71,13 @@ var fight = function() {
     }
     
   };
-  
-fight();
+  for(var i = 0; i < enemyNames.length; i++) {
+    fight(enemyNames[i]);
+  }
+/*fight();
 if (playerHealth > 0 ){
     console.log(playerName+ " is still alive!");
-}
+}*/
 /*console.log(playerName);
 var name ="your name";
 console.log(name);
